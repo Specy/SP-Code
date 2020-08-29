@@ -3,7 +3,7 @@ Javascript library to create SP Code images, a way to put/get any text inside an
 
 # Description
 
-This library allows you to put any UTF-16 text inside an image or create an image from plain text, those images can then be converted back to text.
+This library allows you to put any text inside an image or create an image from plain text, those images can then be converted back to text.
 # Use cases
 
 You can use this library to hide text inside a picture to be decoded later, for example an album image with hidden inside it the lyrics for each song.
@@ -15,8 +15,8 @@ Another use case would be to compress text, in fact the image is usually from 25
 ***This image contains the tetris code in javascript***<br>
 <img src="examples/Tetris.png" width=200 height=200>
 
-***This contains 1000 words***<br>
-<img src="examples/1000Words.png" width=200 height=200>
+***This contains 60kb of text***<br>
+<img src="examples/60kbWords.png" width=200 height=200>
 
 # Usage
 
@@ -26,7 +26,7 @@ To use the library in your website, include it in a script tag:
 ```
 Once imported there will be a global object called SP_Code which contains all the functions of the library
 ### Functions
-The main function, turns text into an image by converting the character UTF-16 code to R G B values, if the character is not ascii, it will be split into sections 
+The main function, turns text into an image by converting the character to R G B values
 ```js
 SP_Code.createImage(text, shift, fill)
 ```
