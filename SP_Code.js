@@ -1,7 +1,7 @@
 let SP_Code = {}
 /**
  * Creates an image from text alone
- * @param {String} image The text to draw as image
+ * @param {String} text The text to draw as image
  * @param {Number} shift The subpixels to shift the text, higher shift means bigger size but the image might look better 
  * @param {Number} fill The subpixel value to fill the remaining empty pixels
  * @return {ImageData} The image generated from the text
@@ -46,7 +46,7 @@ SP_Code.createImage = function (text, shift = 0, fill = 0) {
 }
 
 /**
- * Downloads the imageData as .png
+ * Gets the text from an image 
  * @param {ImageData} image The image to get the text from
  * @return {String} The text contained in the image
  */
