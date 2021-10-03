@@ -1,0 +1,9 @@
+{
+  "name": "spcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/Specy/SP-Code.git",
+  "author": "Specy",
+  "license": "MIT"
+}

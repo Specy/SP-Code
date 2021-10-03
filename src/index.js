@@ -1,0 +1,6 @@
+export { createImage as createImage } from "./utils/createImage"
+export { downloadImageFromCanvas as downloadImageFromCanvas } from "./utils/downloadImageFromCanvas"
+export { downloadImageFromData as downloadImageFromData } from "./utils/downloadImageFromData"
+export { drawOnCanvas as drawOnCanvas } from "./utils/drawOnCanvas"
+export { drawTextOnPicture as drawTextOnPicture } from "./utils/drawTextOnPicture"
+export { getTextFromImage as getTextFromImage } from "./utils/getTextFromImage"

@@ -1,4 +1,3 @@
-let SP_Code = {}
 /**
  * Draws the text on top of an already existing image.
  * @param {ImageData} image The image to draw on
@@ -8,7 +7,7 @@ let SP_Code = {}
  * @param {number} y y position of where to draw the text in the image
  * @return {ImageData} The original image with the text drawn on at x / y position
  */
-export function drawTextOnPicture(image, text = "", shift = 0, x = 10, y = 10) {
+ export function drawTextOnPicture(image, text = "", shift = 0, x = 10, y = 10) {
     let imageToDraw = SP_Code.createImage(text, shift, 255)
     let background = document.createElement("canvas")
     let backgroundCtx = background.getContext("2d")
