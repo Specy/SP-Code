@@ -158,3 +158,5 @@ SP_Code.drawTextOnPicture = function (image, text = "", shift = 0, x = 10, y = 1
     data[7] = 255
     return new ImageData(data, imageData.width, imageData.height)
 }
+
+module.exports = SP_Code

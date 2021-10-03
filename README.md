@@ -20,11 +20,19 @@ Another use case would be to compress text, in fact the image is usually from 25
 
 # Usage
 
-To use the library in your website, include it in a script tag:
+To use the library in your website, either include it in a script tag:
 ```html
 <script src="/path/SP_Code.js"></script>
 ```
 Once imported there will be a global object called SP_Code which contains all the functions of the library
+If you want to use it with Node.JS, you can import/require it:
+```js
+// commonjs
+const SP_Code = require("SP_Code")
+
+//es6
+import SP_Code from "SP_Code"
+```
 ### Functions
 The main function, turns text into an image by converting the character to R G B values
 ```js
