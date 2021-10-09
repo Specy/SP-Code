@@ -1,4 +1,12 @@
 let SP_Code = {}
+
+const isBrowser = typeof window !== "undefined"
+let nodeCanvas = null;
+if (!isBrowser)
+    nodeCanvas = require('canvas');
+
+SP_Code.ImageData = (isBrowser) ? window.ImageData : nodeCanvas.createImageData;
+
 /**
  * Creates an image from text alone
  * @param {String} text The text to draw as image
@@ -42,7 +50,8 @@ SP_Code.createImage = function (text, shift = 0, fill = 0) {
     for (let i = 0; i < subDivision.length; i++) {
         imageData[i] = subDivision[i]
     }
-    return new ImageData(imageData, width, height)
+    // this is the line we care about
+    return new SP_Code.ImageData(imageData, width, height)
 }
 
 /**
@@ -57,7 +66,7 @@ SP_Code.getTextFromImage = function (image) {
     //255 is ignored as it's not used 
     if (data[0] == 2) {
         //if it's inside another picture
-        let canvas = document.createElement("canvas")
+        let canvas = isBrowser ? document.createElement("canvas") : nodeCanvas.createCanvas(200, 200);
         canvas.width = image.width
         canvas.height = image.height
         let ctx = canvas.getContext("2d")
@@ -83,10 +92,10 @@ SP_Code.getTextFromImage = function (image) {
  * @return {undefined} doesn't have a return 
  */
 SP_Code.downloadImageFromData = function (image, fileName = "SP_Code") {
-    let canvas = document.createElement("canvas")
+    let canvas = isBrowser ? document.createElement("canvas") : nodeCanvas.createCanvas(200, 200);
     canvas.width = image.width
     canvas.height = image.height
-    canvas.style.imageRendering = "pixelated"
+    if (isBrowser) canvas.style.imageRendering = "pixelated"
     let ctx = canvas.getContext("2d")
     ctx.putImageData(image, 0, 0)
     SP_Code.downloadImageFromCanvas(canvas, fileName)
@@ -97,11 +106,12 @@ SP_Code.downloadImageFromData = function (image, fileName = "SP_Code") {
  * @param {String} fileName the name of the file, without the extension
  * @return {undefined} doesn't have a return 
  */
+// hmm this will be tought !
 SP_Code.downloadImageFromCanvas = function (canvas, fileName = "SP_Code") {
     var link = document.createElement('a');
     link.style.display = 'none';
     link.download = fileName + '.png';
-    canvas.style.imageRendering = "pixelated"
+    if (isBrowser) canvas.style.imageRendering = "pixelated"
     link.href = canvas.toDataURL("image/png", 1)
     document.body.appendChild(link)
     link.click();
@@ -117,7 +127,7 @@ SP_Code.drawOnCanvas = function (image, canvas) {
     let ctx = canvas.getContext("2d")
     canvas.width = image.width
     canvas.height = image.height
-    canvas.style.imageRendering = "pixelated"
+    if (isBrowser) canvas.style.imageRendering = "pixelated"
     ctx.putImageData(image, 0, 0)
     ctx.getImageData(0, 0, canvas.width, canvas.height) // refreshes the canvas
 }
@@ -132,9 +142,9 @@ SP_Code.drawOnCanvas = function (image, canvas) {
  */
 SP_Code.drawTextOnPicture = function (image, text = "", shift = 0, x = 10, y = 10) {
     let imageToDraw = SP_Code.createImage(text, shift, 255)
-    let background = document.createElement("canvas")
+    let background = isBrowser ? document.createElement("canvas") : nodeCanvas.createCanvas();
     let backgroundCtx = background.getContext("2d")
-    let foreground = document.createElement("canvas")
+    let foreground = isBrowser ? document.createElement("canvas") : nodeCanvas.createCanvas();
     SP_Code.drawOnCanvas(image, background)
     SP_Code.drawOnCanvas(imageToDraw, foreground)
     if (image.width - 10 < imageToDraw.width || image.height - 10 < imageToDraw.height) {
