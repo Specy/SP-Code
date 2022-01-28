@@ -1,0 +1,31 @@
+{
+  "name": "sp-code",
+  "version": "1.0.0",
+  "description": "Javascript library to create SP Code images, a way to put/get any text inside an image or create an image from text ",
+  "main": "SP_Code.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "canvas": "^2.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Specy/SP-Code.git"
+  },
+  "keywords": [
+    "text",
+    "in",
+    "images"
+  ],
+  "author": "Specy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Specy/SP-Code/issues"
+  },
+  "homepage": "https://github.com/Specy/SP-Code#readme"
+}
